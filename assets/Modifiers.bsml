@@ -1,4 +1,4 @@
-<vertical>
+<vertical xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:noNamespaceSchemaLocation='https://raw.githubusercontent.com/RedBrumbler/Quest-BSML-Docs/gh-pages/schema.xsd'>
     <horizontal>
         <text text="Total Score" align="Baseline" italics="true" font-size="5" />
         <text id="MultiplierValue" text="~multiplier" align="Baseline" italics="true" font-size="7" color="~text-color"/>
@@ -7,20 +7,20 @@
     </horizontal>
     <horizontal>
         <vertical min-width="30">
-            <modifier value="NoFail" bind-value="true" on-change="SetNoFail" text="No Fail (+0% / -50%)" src="#NoFailIcon" />
-            <modifier value="SlowerSong" bind-value="true" on-change="SetSlowerSong" text="Slower Song (-50%)" src="#SlowerSongIcon" />
-            <modifier value="EasyMode" bind-value="true" on-change="SetEasyMode" text="Easy Mode (-40%)" />
-            <modifier value="SameColor" bind-value="true" on-change="SetSameColor" text="Same Color (+7%)" src="#ProModeIcon" />
+            <modifier value="NoFail" bind-value="true" apply-on-change="true" text="No Fail(+0% / -50%)" src="#NoFailIcon"/>
+            <modifier value="SlowerSong" bind-value="true" apply-on-change="true" text="Slower Song (-50%)" src="#SlowerSongIcon" />
+            <modifier value="EasyMode" bind-value="true" apply-on-change="true" text="Easy Mode (-40%)" />
+            <modifier value="SameColor" bind-value="true" apply-on-change="true" text="Same Color (+7%)" src="#ProModeIcon" />
         </vertical>
         <vertical child-expand-height="false" min-width="30">
-            <modifier value="OneLife" bind-value="true" on-change="SetOneLife" text="One Life" src="#OneLifeIcon" />
-            <modifier value="FasterSong" bind-value="true" on-change="SetFasterSong" text="Faster Song (+7%)" src="#FasterSongIcon" />
-            <modifier value="ProMode" bind-value="true" on-change="SetProMode" text="Pro Mode (+12%)" src="#PreciseAnglesIcon" />
+            <modifier value="OneLife" bind-value="true" apply-on-change="true" text="One Life" src="#OneLifeIcon" />
+            <modifier value="FasterSong" bind-value="true" apply-on-change="true" text="Faster Song (+7%)" src="#FasterSongIcon" />
+            <modifier value="ProMode" bind-value="true" apply-on-change="true" text="Pro Mode (+12%)" src="#PreciseAnglesIcon" />
         </vertical>
         <vertical child-expand-height="false" min-width="30">
-            <modifier value="OneHp" bind-value="true" on-change="SetOneHp" text="One HP" src="#FourLivesIcon" />
-            <modifier value="SuperFastSong" bind-value="true" on-change="SetSuperFastSong" text="Super Fast Song (+15%)" src="#SuperFastSongIcon" />
-            <modifier value="Hidden"  bind-value="true" on-change="SetHidden" text="Hidden (+5%)" src="#SmallNotesIcon" />
+            <modifier value="OneHp" bind-value="true" apply-on-change="true" text="One HP" src="#FourLivesIcon" />
+            <modifier value="SuperFastSong" bind-value="true" apply-on-change="true" text="Super Fast Song (+15%)" src="#SuperFastSongIcon" />
+            <modifier value="Hidden"  bind-value="true" apply-on-change="true" text="Hidden (+5%)" src="#SmallNotesIcon" />
         </vertical>
     </horizontal>
     <horizontal>
@@ -28,16 +28,16 @@
     </horizontal>
     <horizontal>
         <vertical min-width="30" >
-            <modifier value="NoArrows" bind-value="true" on-change="SetNoArrows" text="No Arrows" src="#NoArrowsIcon" />
-            <modifier value="GhostNotes" bind-value="true" on-change="SetGhostNotes" text="Ghost Notes" src="#GhostNotes" />
+            <modifier value="NoArrows" bind-value="true" apply-on-change="true" text="No Arrows" src="#NoArrowsIcon" />
+            <modifier value="GhostNotes" bind-value="true" apply-on-change="true" text="Ghost Notes" src="#GhostNotes" />
         </vertical>
         <vertical min-width="30" >
-            <modifier value="NoBombs" bind-value="true" on-change="SetNoBombs" text="No Bombs" src="#NoBombsIcon" />
-            <modifier value="DisappearingArrows" bind-value="true" on-change="SetDisappearingArrows" text="Disappearing Arrows" src="#DisappearingArrows" />
+            <modifier value="NoBombs" bind-value="true" apply-on-change="true" text="No Bombs" src="#NoBombsIcon" />
+            <modifier value="DisappearingArrows" bind-value="true" apply-on-change="true" text="Disappearing Arrows" src="#DisappearingArrows" />
         </vertical>
         <vertical min-width="30" >
-            <modifier value="NoWalls" bind-value="true" on-change="SetNoWalls" text="No Walls" src="#NoObstaclesIcon" />
-            <modifier value="SmallNotes" bind-value="true" on-change="SetSmallNotes" text="Small Notes" src="#SmallNotesIcon" />
+            <modifier value="NoWalls" bind-value="true" apply-on-change="true" text="No Walls" src="#NoObstaclesIcon" />
+            <modifier value="SmallNotes" bind-value="true" apply-on-change="true" text="Small Notes" src="#SmallNotesIcon" />
         </vertical>
     </horizontal>
 </vertical>

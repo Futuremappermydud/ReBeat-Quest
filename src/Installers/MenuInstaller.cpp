@@ -14,7 +14,7 @@ namespace ReBeat
     {
         auto container = get_Container();
 
-        //container->BindInterfacesAndSelfTo<MenuView*>()->AsSingle();
-        //container->BindInterfacesAndSelfTo<ModifiersView*>()->AsSingle();
+        container->BindInterfacesAndSelfTo<MenuView*>()->AsSingle();
+        container->BindInterfacesAndSelfTo<ModifiersView*>()->AsSingle();
     }
 }

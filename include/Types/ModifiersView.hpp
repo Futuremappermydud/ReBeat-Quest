@@ -1,4 +1,4 @@
-/*#pragma once
+#pragma once
 #include "System/IDisposable.hpp"
 #include "Zenject/IInitializable.hpp"
 
@@ -6,6 +6,8 @@
 #include "custom-types/shared/macros.hpp"
 
 #include "bsml/shared/macros.hpp"
+
+#include "TMPro/TextMeshProUGUI.hpp"
 
 DECLARE_CLASS_CODEGEN_INTERFACES(ReBeat, ModifiersView, System::Object, std::vector<Il2CppClass*>({classof(::Zenject::IInitializable*), classof(::System::IDisposable*)}),
                                  DECLARE_INSTANCE_METHOD(void, PostParse);
@@ -17,4 +19,26 @@ DECLARE_CLASS_CODEGEN_INTERFACES(ReBeat, ModifiersView, System::Object, std::vec
     DECLARE_BSML_PROPERTY(bool, SlowerSong);
     DECLARE_BSML_PROPERTY(bool, EasyMode);
     DECLARE_BSML_PROPERTY(bool, SameColor);
-)*/
+
+    DECLARE_BSML_PROPERTY(bool, OneLife);
+    DECLARE_BSML_PROPERTY(bool, FasterSong);
+    DECLARE_BSML_PROPERTY(bool, ProMode);
+
+    DECLARE_BSML_PROPERTY(bool, OneHp);
+    DECLARE_BSML_PROPERTY(bool, SuperFastSong);
+    DECLARE_BSML_PROPERTY(bool, Hidden);
+    
+    DECLARE_BSML_PROPERTY(bool, NoArrows);
+    DECLARE_BSML_PROPERTY(bool, GhostNotes);
+
+    DECLARE_BSML_PROPERTY(bool, NoBombs);
+    DECLARE_BSML_PROPERTY(bool, DisappearingArrows);
+
+    DECLARE_BSML_PROPERTY(bool, NoWalls);
+    DECLARE_BSML_PROPERTY(bool, SmallNotes);
+
+    DECLARE_INSTANCE_FIELD(TMPro::TextMeshProUGUI*, MultiplierValue);
+    DECLARE_INSTANCE_FIELD(TMPro::TextMeshProUGUI*, MaxRank);
+    public:
+    void Save(bool config = true);
+)

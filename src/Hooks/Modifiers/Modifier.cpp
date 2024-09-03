@@ -11,6 +11,7 @@
 #include "GlobalNamespace/NoteMovement.hpp"
 #include "GlobalNamespace/CutoutAnimateEffect.hpp"
 #include "GlobalNamespace/CutoutEffect.hpp"
+#include "GlobalNamespace/ConditionalMaterialSwitcher.hpp"
 #include "UnityEngine/Renderer.hpp"
 #include <algorithm>
 
@@ -81,6 +82,15 @@ namespace ReBeat::Hooks
         }
     }
 
+    MAKE_HOOK_MATCH(Modifier_ConditionalMaterialSwitcher, &GlobalNamespace::ConditionalMaterialSwitcher::Awake, void, GlobalNamespace::ConditionalMaterialSwitcher* self) {
+        Modifier_ConditionalMaterialSwitcher(self);
+        auto name = self->get_gameObject()->get_name();
+        ReBeat::Logger.info("ConditionalMaterialSwitcher: {}", name);
+        if (name->Equals("NoteCube")) {
+            self->_renderer->sharedMaterial = self->_material1;
+        }
+    }
+
     void ModifierHooks()
     {
         auto mInfo = il2cpp_utils::il2cpp_type_check::MetadataGetter<
@@ -91,5 +101,6 @@ namespace ReBeat::Hooks
 
         INSTALL_HOOK_DIRECT(ReBeat::Logger, Modifier_HandleCubeNoteControllerDidInit, (void*)(mInfo->methodPointer));
         INSTALL_HOOK_DIRECT(ReBeat::Logger, Modifier_HandleNoteMovementNoteDidMoveInJumpPhase, (void*)(mInfo2->methodPointer));
+        INSTALL_HOOK(ReBeat::Logger, Modifier_ConditionalMaterialSwitcher);
     }
 }

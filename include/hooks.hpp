@@ -19,20 +19,23 @@ namespace ReBeat::Hooks
 
     extern Helpers::EnergyCounter* EnergyCounter;
 
-    void BeatmapDataHooks();
-    void EnergyControllerHooks();
-    void ModifierHooks();
-    void SameColorHooks();
-    void DisableWrongColorBadCutHooks();
-    void GameplayModifiersPatcherHooks();
-    void NjsAdjustmentHooks();
-    void NoteColliderSizeHooks();
-    void SetModifiersHooks();
+    void AddCharacteristicHooks();
     void AngleCutScoreHooks();
+    void BeatmapDataHooks();
     void CenterCutScoreHooks();
     void DisableComboMultiplierHooks();
-    void ModMultiplierPatchHooks();
-    void SwingRatingHooks();
-    void ScoreControllerHooks();
+    void DisableWrongColorBadCutHooks();
+    void DisplayRankHooks();
+    void EnergyControllerHooks();
     void EnergyUIHooks();
+    void GameplayModifiersPatcherHooks();
+    void ModifierHooks();
+    void ModMultiplierPatchHooks();
+    void NjsAdjustmentHooks();
+    void NoteColliderSizeHooks();
+    void RelativeScoreHooks();
+    void SameColorHooks();
+    void ScoreControllerHooks();
+    void SetModifiersHooks();
+    void SwingRatingHooks();
 }

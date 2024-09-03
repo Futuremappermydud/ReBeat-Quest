@@ -94,6 +94,16 @@
       "id": "lapiz",
       "versionRange": "^0.2.10",
       "additionalData": {}
+    },
+    {
+      "id": "conditional-dependencies",
+      "versionRange": "^0.3.0",
+      "additionalData": {}
+    },
+    {
+      "id": "songcore",
+      "versionRange": "^1.1.15",
+      "additionalData": {}
     }
   ]
 }

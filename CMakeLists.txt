@@ -19,8 +19,6 @@ add_compile_options(-frtti -fexceptions -fvisibility=hidden -fPIE -fPIC)
 include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/utils.cmake)
 include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/qpm.cmake)
 
-include(${EXTERN_DIR}/includes/kaleb/shared/cmake/assets.cmake)
-
 if(${CMAKE_BUILD_TYPE} STREQUAL "RELEASE" OR ${CMAKE_BUILD_TYPE} STREQUAL "RelWithDebInfo" OR ${CMAKE_BUILD_TYPE} STREQUAL "MinSizeRel")
         # Better optimizations
         add_compile_options(-O3)
@@ -62,12 +60,8 @@ add_library(
         ${c_file_list}
 )
 
-# Add any assets
-add_assets(assets_${COMPILE_ID} STATIC ${CMAKE_CURRENT_LIST_DIR}/assets ${INCLUDE_DIR}/assets.hpp)
-
 # for inline hook
 target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE -llog)
-target_link_libraries(${COMPILE_ID} PRIVATE assets_${COMPILE_ID})
 
 target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE ${INCLUDE_DIR})
 target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE ${SHARED_DIR})
@@ -79,3 +73,5 @@ RECURSE_FILES(src_inline_hook_beatsaber_hook_local_extra_cpp ${EXTERN_DIR}/inclu
 
 target_sources(${COMPILE_ID} PRIVATE ${src_inline_hook_beatsaber_hook_local_extra_c})
 target_sources(${COMPILE_ID} PRIVATE ${src_inline_hook_beatsaber_hook_local_extra_cpp})
+
+include(assets_include.cmake)
