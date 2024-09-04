@@ -49,7 +49,6 @@ namespace ReBeat::Hooks
     {
         if(isCustomLevel)
         {
-            ReBeat::Logger.info("hi!!!");
             auto rebeatData = System::Collections::Generic::List_1<UnityW<GlobalNamespace::BeatmapCharacteristicSO>>::New_ctor();
 
             auto baseDataIter = il2cpp_utils::cast<System::Linq::Enumerable::_DistinctIterator_d__68_1<GlobalNamespace::BeatmapCharacteristicSO*>>(beatmapCharacteristics);
@@ -58,19 +57,13 @@ namespace ReBeat::Hooks
             
             auto baseData = ArrayW<GlobalNamespace::BeatmapCharacteristicSO*>(hashSet->Count);
             hashSet->CopyTo(baseData);
-            
-            ReBeat::Logger.info("hi4 {}", baseData.size());
 
             for (auto item : baseData) {
-                ReBeat::Logger.info("BRUH {}", fmt::ptr(item));
-                ReBeat::Logger.info("BRUH2 {}", item->serializedName);
                 if (item->serializedName.starts_with("ReBeat_") && getReBeatConfig().Enabled.GetValue()) {
-                    ReBeat::Logger.info("hi5");
                     rebeatData->Add(item);
                 }
 
                 if (!item->serializedName.starts_with("ReBeat_") && !getReBeatConfig().Enabled.GetValue()) {
-                    ReBeat::Logger.info("hi6");
                     rebeatData->Add(item);
                 }
             }
