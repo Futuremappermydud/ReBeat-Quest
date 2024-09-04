@@ -17,9 +17,14 @@ namespace ReBeat::Hooks
     extern int CurrentScore;
     extern int CurrentMaxScore;
 
+    //Statics set by Characteristic hooks
+    extern bool isCustomLevel;
+
     extern Helpers::EnergyCounter* EnergyCounter;
 
     void AddCharacteristicHooks();
+    void CharacteristicUIHooks();
+    void RegisterCharacteristicsHooks();
     void AngleCutScoreHooks();
     void BeatmapDataHooks();
     void CenterCutScoreHooks();

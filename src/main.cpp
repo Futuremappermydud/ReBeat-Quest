@@ -23,26 +23,14 @@ MOD_EXTERN_FUNC void setup(CModInfo *info) noexcept {
     Paper::Logger::RegisterFileContextId(ReBeat::Logger.tag);
 }
 
- UnityEngine::Sprite* TextureToSprite(UnityEngine::Texture2D* tex) {
-        return (tex && tex->m_CachedPtr.m_value) ? UnityEngine::Sprite::Create(tex, UnityEngine::Rect(0.0f, 0.0f, (float)tex->get_width(), (float)tex->get_height()), UnityEngine::Vector2(0.5f,0.5f), 100.0f, 1u, UnityEngine::SpriteMeshType::FullRect, UnityEngine::Vector4(0.0f, 0.0f, 0.0f, 0.0f), false) : nullptr;
-    }
-
-UnityEngine::Sprite* ArrayToSprite(ArrayW<uint8_t> bytes) {
-        UnityEngine::Texture2D* texture = UnityEngine::Texture2D::New_ctor(0, 0, UnityEngine::TextureFormat::RGBA32, true, false);
-        if (UnityEngine::ImageConversion::LoadImage(texture, bytes, false)) {
-            return TextureToSprite(texture);
-        }
-        UnityEngine::Object::DestroyImmediate(texture);
-        return nullptr;
-    }
-
-
 MOD_EXTERN_FUNC void late_load() noexcept {
     il2cpp_functions::Init();
 
     getReBeatConfig().Init(modInfo);
 
     ReBeat::Hooks::AddCharacteristicHooks();
+    ReBeat::Hooks::CharacteristicUIHooks();
+    ReBeat::Hooks::RegisterCharacteristicsHooks();
     ReBeat::Hooks::AngleCutScoreHooks();
     ReBeat::Hooks::BeatmapDataHooks();
     ReBeat::Hooks::CenterCutScoreHooks();
@@ -67,19 +55,6 @@ MOD_EXTERN_FUNC void late_load() noexcept {
 
     auto zenjector = ::Lapiz::Zenject::Zenjector::Get();
     zenjector->Install<ReBeat::MenuInstaller*>(::Lapiz::Zenject::Location::Menu);
-
-    static SafePtrUnity<GlobalNamespace::BeatmapCharacteristicSO> rebeat = SongCore::API::Characteristics::CreateCharacteristic(
-        BSML::Lite::ArrayToSprite(IncludedAssets::icon_png),
-        "ReBeat",
-        "ReBeat",
-        "ReBeat_Standard",
-        "ReBeat_Standard",
-        false,
-        false,
-        0
-    );
-
-    SongCore::API::Characteristics::RegisterCustomCharacteristic(rebeat.ptr());
 }
 
 BSML_DATACACHE(MenuView) {

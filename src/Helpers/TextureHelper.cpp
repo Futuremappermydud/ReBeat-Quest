@@ -4,6 +4,8 @@
 #include "UnityEngine/Graphics.hpp"
 #include "UnityEngine/Rect.hpp"
 #include "UnityEngine/Color.hpp"
+#include "UnityEngine/RenderTextureFormat.hpp"
+#include "UnityEngine/RenderTextureReadWrite.hpp"
 #include "beatsaber-hook/shared/utils/typedefs-array.hpp"
 #include <cmath>
 #include <limits>

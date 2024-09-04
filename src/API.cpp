@@ -44,3 +44,7 @@ EXPOSE_API(GetOneHP, bool) {
 EXPOSE_API(SetOneHP, void, bool enabled) {
     ReBeat::Helpers::ModifierHelper::OneHp = enabled;
 }
+
+EXPOSE_API(ResetModifiers, void) {
+    ReBeat::Helpers::ModifierHelper::Load();
+}

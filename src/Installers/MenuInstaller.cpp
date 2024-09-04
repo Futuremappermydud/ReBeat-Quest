@@ -6,6 +6,7 @@
 #include "Zenject/DiContainer.hpp"
 #include "Zenject/FromBinderNonGeneric.hpp"
 
+
 DEFINE_TYPE(ReBeat, MenuInstaller);
 
 namespace ReBeat

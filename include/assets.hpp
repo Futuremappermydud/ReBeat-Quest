@@ -46,5 +46,6 @@ namespace IncludedAssets {
 	DECLARE_FILE(Menu_bsml)
 	DECLARE_FILE(Modifiers_bsml)
 	DECLARE_FILE(icon_png)
+	DECLARE_FILE(transfer_png)
 
 }
