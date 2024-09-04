@@ -51,19 +51,8 @@ namespace ReBeat::Hooks
         {
             ReBeat::Logger.info("hi!!!");
             auto rebeatData = System::Collections::Generic::List_1<UnityW<GlobalNamespace::BeatmapCharacteristicSO>>::New_ctor();
-            auto* k2 = *reinterpret_cast<Il2CppClass**>(beatmapCharacteristics);
-            ReBeat::Logger.info("adof {}", il2cpp_utils::ClassStandardName(k2, true));
 
             auto baseDataIter = il2cpp_utils::cast<System::Linq::Enumerable::_DistinctIterator_d__68_1<GlobalNamespace::BeatmapCharacteristicSO*>>(beatmapCharacteristics);
-            ReBeat::Logger.info("hi1 {}", fmt::ptr(baseDataIter));
-            ReBeat::Logger.info("source {}", fmt::ptr(baseDataIter->source));
-            ReBeat::Logger.info("___source {}", fmt::ptr(baseDataIter->___source));
-            ReBeat::Logger.info("_____3__source {}", fmt::ptr(baseDataIter->_____3__source));
-            ReBeat::Logger.info("__3__source {}", fmt::ptr(baseDataIter->__3__source));
-            ReBeat::Logger.info("___comparer {}", fmt::ptr(baseDataIter->___comparer));
-            ReBeat::Logger.info("_____3__comparer {}", fmt::ptr(baseDataIter->_____3__comparer));
-            ReBeat::Logger.info("comparer {}", fmt::ptr(baseDataIter->comparer));
-            ReBeat::Logger.info("__3__comparer {}", fmt::ptr(baseDataIter->__3__comparer));
 
             auto hashSet = System::Collections::Generic::HashSet_1<GlobalNamespace::BeatmapCharacteristicSO*>::New_ctor(baseDataIter->__3__source, baseDataIter->comparer);  
             
