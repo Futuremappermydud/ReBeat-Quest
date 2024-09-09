@@ -38,7 +38,9 @@ MOD_EXTERN_FUNC void late_load() noexcept {
     ReBeat::Hooks::DisableWrongColorBadCutHooks();
     ReBeat::Hooks::DisplayRankHooks();
     ReBeat::Hooks::EnergyControllerHooks();
+    ReBeat::Hooks::CopyModifiersHooks();
     ReBeat::Hooks::EnergyUIHooks();
+    ReBeat::Hooks::ResetModifiersHooks();
     ReBeat::Hooks::GameplayModifiersPatcherHooks();
     ReBeat::Hooks::ModifierHooks();
     ReBeat::Hooks::ModMultiplierPatchHooks();

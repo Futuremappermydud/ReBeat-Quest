@@ -2,6 +2,7 @@
 #include "System/IDisposable.hpp"
 #include "Zenject/IInitializable.hpp"
 
+#include "bsml/shared/BSML/Components/Settings/ToggleSetting.hpp"
 #include "lapiz/shared/macros.hpp"
 #include "custom-types/shared/macros.hpp"
 
@@ -39,6 +40,24 @@ DECLARE_CLASS_CODEGEN_INTERFACES(ReBeat, ModifiersView, System::Object, std::vec
 
     DECLARE_INSTANCE_FIELD(TMPro::TextMeshProUGUI*, MultiplierValue);
     DECLARE_INSTANCE_FIELD(TMPro::TextMeshProUGUI*, MaxRank);
+
+    DECLARE_INSTANCE_FIELD(BSML::ToggleSetting*, OneLifeToggle);
+    DECLARE_INSTANCE_FIELD(BSML::ToggleSetting*, OneHpToggle);
+
+    DECLARE_INSTANCE_FIELD(BSML::ToggleSetting*, EasyModeToggle);
+    DECLARE_INSTANCE_FIELD(BSML::ToggleSetting*, ProModeToggle);
+
+    DECLARE_INSTANCE_FIELD(BSML::ToggleSetting*, HiddenToggle);
+    DECLARE_INSTANCE_FIELD(BSML::ToggleSetting*, GhostNotesToggle);
+    DECLARE_INSTANCE_FIELD(BSML::ToggleSetting*, DisappearingArrowsToggle);
+
+    DECLARE_INSTANCE_FIELD(BSML::ToggleSetting*, SlowerSongToggle);
+    DECLARE_INSTANCE_FIELD(BSML::ToggleSetting*, FasterSongToggle);
+    DECLARE_INSTANCE_FIELD(BSML::ToggleSetting*, SuperFastSongToggle);
+
+    DECLARE_INSTANCE_FIELD(BSML::ToggleSetting*, NoArrowsToggle);
+
+
     public:
     void Save(bool config = true);
 )

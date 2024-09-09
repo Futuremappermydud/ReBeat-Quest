@@ -17,9 +17,9 @@ namespace ReBeat::Hooks
         {
             return NoteColliderSize_Awake(self);
         }
-        UnityEngine::Vector3 size = Helpers::ModifierHelper::ProMode ? UnityEngine::Vector3(0.45f, 0.45f, 0.45f) :
+        UnityEngine::Vector3 size = Helpers::ModifierHelper::ProMode ? UnityEngine::Vector3(0.45f, 0.45f, 0.6f) :
                                     Helpers::ModifierHelper::EasyMode ? UnityEngine::Vector3(0.8f, 0.5f, 0.8f) : 
-                                    UnityEngine::Vector3(0.5f, 0.5f, 0.5f);
+                                    UnityEngine::Vector3(0.5f, 0.5f, 0.7f);
         self->_collider->set_size(size);
         NoteColliderSize_Awake(self);
     }

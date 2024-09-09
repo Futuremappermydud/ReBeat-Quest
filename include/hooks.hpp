@@ -1,6 +1,10 @@
 #pragma once
 
+#include "GlobalNamespace/GameplayModifiers.hpp"
 #include "Helpers/EnergyCounter.hpp"
+#include "beatsaber-hook/shared/utils/typedefs-wrappers.hpp"
+
+#include "GlobalNamespace/GameplaySetupViewController.hpp"
 
 namespace ReBeat::Hooks
 {
@@ -20,6 +24,13 @@ namespace ReBeat::Hooks
     //Statics set by Characteristic hooks
     extern bool isCustomLevel;
 
+    //Statics set by CopyModifiers hooks
+    extern SafePtr<GlobalNamespace::GameplayModifiers> modifiers;
+
+    //Statics set by ResetModifiers hooks
+    extern SafePtrUnity<GlobalNamespace::GameplaySetupViewController> gsvcInstance;
+    extern bool loadMods;
+
     extern Helpers::EnergyCounter* EnergyCounter;
 
     void AddCharacteristicHooks();
@@ -32,7 +43,9 @@ namespace ReBeat::Hooks
     void DisableWrongColorBadCutHooks();
     void DisplayRankHooks();
     void EnergyControllerHooks();
+    void CopyModifiersHooks();
     void EnergyUIHooks();
+    void ResetModifiersHooks();
     void GameplayModifiersPatcherHooks();
     void ModifierHooks();
     void ModMultiplierPatchHooks();

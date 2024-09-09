@@ -19,7 +19,7 @@ namespace ReBeat::Helpers
         float cropWidth = source->textureRect.width;
         float cropHeight = source->textureRect.height;
         float cropX = source->textureRect.x;
-        float cropY = source->texture->height - source->textureRect.y - cropHeight;
+        float cropY = source->textureRect.y;
         UnityEngine::RenderTexture* renderTex = UnityEngine::RenderTexture::GetTemporary(
             (int)width,
             (int)height,

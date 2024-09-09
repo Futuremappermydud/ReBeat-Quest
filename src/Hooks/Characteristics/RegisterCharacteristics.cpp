@@ -15,9 +15,9 @@
 #include "Helpers/TextureHelper.hpp"
 namespace ReBeat::Hooks
 {
-    MAKE_HOOK_MATCH(RegisterCharacteristics_SetSingletonInstance, &BGLib::Polyglot::Localization::SetSingletonInstance, void, BGLib::Polyglot::LocalizationModel* instance)
+    MAKE_HOOK_MATCH(RegisterCharacteristics_Ctor, &GlobalNamespace::BeatmapCharacteristicCollection::_ctor, void, GlobalNamespace::BeatmapCharacteristicCollection* instance, GlobalNamespace::BeatmapCharacteristicCollectionSO* collection, GlobalNamespace::AppStaticSettingsSO* appStaticSettings)
     {
-        RegisterCharacteristics_SetSingletonInstance(instance);
+        RegisterCharacteristics_Ctor(instance, collection, appStaticSettings);
 
         ReBeat::Logger.info("Registering ReBeat! Characteristics");
 
@@ -39,13 +39,13 @@ namespace ReBeat::Hooks
             auto combined = BSML::Utilities::LoadSpriteFromTexture(
                 ReBeat::Helpers::TextureHelper::MergeTextures({ rebeatIcon, transferIcon, charTex }));
 
-            auto newCharacteristic = SongCore::API::Characteristics::CreateCharacteristic(combined, fmt::format("ReBeat! {}", characteristic->name), fmt::format("ReBeat! {}", BGLib::Polyglot::Localization::Get(characteristic->descriptionLocalizationKey)), fmt::format("ReBeat_{}", characteristic->serializedName), fmt::format("ReBeat_{}", characteristic->compoundIdPartName), characteristic->requires360Movement, characteristic->containsRotationEvents, characteristic->sortingOrder);
+            auto newCharacteristic = SongCore::API::Characteristics::CreateCharacteristic(combined, fmt::format("ReBeat! {}", characteristic->name), fmt::format("ReBeat! {}", characteristic->serializedName), fmt::format("ReBeat_{}", characteristic->serializedName), fmt::format("ReBeat_{}", characteristic->compoundIdPartName), characteristic->requires360Movement, characteristic->containsRotationEvents, characteristic->sortingOrder);
             SongCore::API::Characteristics::RegisterCustomCharacteristic(newCharacteristic);
         }
     }
 
     void RegisterCharacteristicsHooks()
     {
-        INSTALL_HOOK(ReBeat::Logger, RegisterCharacteristics_SetSingletonInstance);
+        INSTALL_HOOK(ReBeat::Logger, RegisterCharacteristics_Ctor);
     }
 }

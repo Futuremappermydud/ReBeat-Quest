@@ -1,12 +1,14 @@
+#include "GlobalNamespace/zzzz__LevelScenesTransitionSetupDataSO_def.hpp"
 #include "hooks.hpp"
 #include "logger.hpp"
 
 #include "beatsaber-hook/shared/utils/hooking.hpp"
 
 #include "GlobalNamespace/AudioTimeSyncController.hpp"
-#include "GlobalNamespace/BeatmapDataLoader.hpp"
+#include "GlobalNamespace/GameplayCoreSceneSetupData.hpp"
 #include "GlobalNamespace/IReadonlyBeatmapData.hpp"
 #include "UnityEngine/AudioClip.hpp"
+#include "System/Threading/Tasks/Task_1.hpp"
 
 namespace ReBeat::Hooks
 {
@@ -19,16 +21,12 @@ namespace ReBeat::Hooks
         AudioLength(self, audioClip, startSongTime, songTimeOffset, timeScale);
     }
 
-    MAKE_HOOK_MATCH(NoteCount, &GlobalNamespace::BeatmapDataLoader::LoadBeatmapData, GlobalNamespace::IReadonlyBeatmapData*, GlobalNamespace::BeatmapDataLoader* self, 
-                                ::GlobalNamespace::IBeatmapLevelData* beatmapLevelData, 
-                                ::GlobalNamespace::BeatmapKey beatmapKey,
-                                ::float_t startBpm, bool loadingForDesignatedEnvironment,
-                                ::GlobalNamespace::IEnvironmentInfo* environmentInfo,
-                                ::GlobalNamespace::GameplayModifiers* gameplayModifiers,
-                                ::GlobalNamespace::PlayerSpecificSettings* playerSpecificSettings)
+    MAKE_HOOK_MATCH(NoteCount, &GlobalNamespace::GameplayCoreSceneSetupData::TransformBeatmapData, GlobalNamespace::IReadonlyBeatmapData*, GlobalNamespace::GameplayCoreSceneSetupData* self, 
+                                GlobalNamespace::IReadonlyBeatmapData* beatmapData)
     {
-        auto result = NoteCount(self, beatmapLevelData, beatmapKey, startBpm, loadingForDesignatedEnvironment, environmentInfo, gameplayModifiers, playerSpecificSettings);
+        auto result = NoteCount(self, beatmapData);
         noteCount = result->get_cuttableNotesCount();
+        ReBeat::Logger.info("Note count: {}", noteCount);
         return result;
     }
 

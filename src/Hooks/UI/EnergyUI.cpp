@@ -28,14 +28,14 @@ namespace ReBeat::Hooks
         }
 
         UnityEngine::Color healthColor;
-        if (EnergyCounter->MaxHealth == 1) healthColor = UnityEngine::Color::get_green();
-        else healthColor = EnergyCounter->Health > 3 ? UnityEngine::Color::get_green() :
-            EnergyCounter->Health > 1 ? UnityEngine::Color::get_yellow() :
-            UnityEngine::Color::get_red();
+        if (EnergyCounter->MaxHealth == 1) healthColor = getReBeatConfig().HealthColor.GetValue();
+        else healthColor = EnergyCounter->Health > 3 ? getReBeatConfig().HealthColor.GetValue() :
+            EnergyCounter->Health > 1 ? getReBeatConfig().LowHealthColor.GetValue() :
+            getReBeatConfig().MinHealthColor.GetValue();
 
-        // 0 145 255
-        UnityEngine::Color bruhColor = UnityEngine::Color(getReBeatConfig().ColorRed.GetValue()/255.0f, getReBeatConfig().ColorGreen.GetValue()/255.0f, getReBeatConfig().ColorBlue.GetValue()/255.0f, 1.0f);
-        UnityEngine::Color shieldColor = EnergyCounter->Shield < EnergyCounter->MaxShield ? bruhColor : UnityEngine::Color::get_cyan();
+        UnityEngine::Color shieldColor = EnergyCounter->Shield < EnergyCounter->MaxShield
+            ? getReBeatConfig().LowShieldColor.GetValue()
+            : getReBeatConfig().ShieldColor.GetValue();
 
         for (int i = 0; i < self->____batteryLifeSegments->get_Count(); i++) {
             if (i < EnergyCounter->Health) {
@@ -52,7 +52,7 @@ namespace ReBeat::Hooks
         }
 
 
-            //recharge bar
+        //recharge bar
         self->____energyBar->gameObject->SetActive(EnergyCounter->Shield < EnergyCounter->MaxShield);
         self->____energyBarRectTransform->anchorMax = UnityEngine::Vector2((float)EnergyCounter->ShieldProgress / (EnergyCounter->ShieldRegen-1.0f), 1.0f);
     }
@@ -65,7 +65,13 @@ namespace ReBeat::Hooks
             return;
         }
 
-        self->____energyBar->gameObject->transform->position = UnityEngine::Vector3(-0.9539997f, -0.86f, 7.75f);
+        static float _prevEnergyBarY = 0.0f;
+
+        if (std::abs(std::abs(self->____energyBar->transform->position.y - _prevEnergyBarY) - 0.22) < 0.01) return;
+        _prevEnergyBarY = self->____energyBar->transform->position.y;
+        auto vector3 = self->____energyBar->transform->position;
+        vector3.y -= 0.22f;
+        self->____energyBar->transform->position = vector3;
     }
 
     void EnergyUIHooks()

@@ -38,7 +38,7 @@ namespace ReBeat::Hooks
 		if (std::abs(self->_prevRelativeScore - relativeScore) >= 0.001f)
 		{
 			self->_stringBuilder->Remove(0, self->_stringBuilder->get_Length());
-			self->_stringBuilder->Append(fmt::format("{:.2f}%", relativeScore));
+			self->_stringBuilder->Append(fmt::format("{:.2f}%", relativeScore * 100.0f));
 			self->_relativeScoreText->text = self->_stringBuilder->ToString();
 			self->_prevRelativeScore = relativeScore;
 		}

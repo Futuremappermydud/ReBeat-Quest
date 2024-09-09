@@ -59,6 +59,13 @@ namespace ReBeat
 
     void ModifiersView::set_SlowerSong(bool value) {
         Helpers::ModifierHelper::SlowerSong = value;
+        if (value)
+        {
+            Helpers::ModifierHelper::FasterSong = false;
+            FasterSongToggle->toggle->set_isOn(false);
+            Helpers::ModifierHelper::SuperFastSong = false;
+            SuperFastSongToggle->toggle->set_isOn(false);
+        }
         Save();
     }
 
@@ -68,6 +75,11 @@ namespace ReBeat
 
     void ModifiersView::set_EasyMode(bool value) {
         Helpers::ModifierHelper::EasyMode = value;
+        if (value)
+        {
+            Helpers::ModifierHelper::ProMode = false;
+            ProModeToggle->toggle->set_isOn(false);
+        }
         Save();
     }
 
@@ -86,6 +98,11 @@ namespace ReBeat
 
     void ModifiersView::set_OneLife(bool value) {
         Helpers::ModifierHelper::OneLife = value;
+        if (value)
+        {
+            Helpers::ModifierHelper::OneHp = false;
+            OneHpToggle->toggle->set_isOn(false);
+        }
         Save();
     }
 
@@ -95,6 +112,13 @@ namespace ReBeat
 
     void ModifiersView::set_FasterSong(bool value) {
         Helpers::ModifierHelper::FasterSong = value;
+        if (value)
+        {
+            Helpers::ModifierHelper::SlowerSong = false;
+            SlowerSongToggle->toggle->set_isOn(false);
+            Helpers::ModifierHelper::SuperFastSong = false;
+            SuperFastSongToggle->toggle->set_isOn(false);
+        }
         Save();
     }
 
@@ -104,6 +128,11 @@ namespace ReBeat
 
     void ModifiersView::set_ProMode(bool value) {
         Helpers::ModifierHelper::ProMode = value;
+        if (value)
+        {
+            Helpers::ModifierHelper::EasyMode = false;
+            EasyModeToggle->toggle->set_isOn(false);
+        }
         Save();
     }
 
@@ -113,6 +142,11 @@ namespace ReBeat
 
     void ModifiersView::set_OneHp(bool value) {
         Helpers::ModifierHelper::OneHp = value;
+        if (value)
+        {
+            Helpers::ModifierHelper::OneLife = false;
+            OneLifeToggle->toggle->set_isOn(false);
+        }
         Save();
     }
 
@@ -122,6 +156,13 @@ namespace ReBeat
 
     void ModifiersView::set_SuperFastSong(bool value) {
         Helpers::ModifierHelper::SuperFastSong = value;
+        if (value)
+        {
+            Helpers::ModifierHelper::SlowerSong = false;
+            SlowerSongToggle->toggle->set_isOn(false);
+            Helpers::ModifierHelper::FasterSong = false;
+            FasterSongToggle->toggle->set_isOn(false);
+        }
         Save();
     }
 
@@ -131,6 +172,18 @@ namespace ReBeat
 
     void ModifiersView::set_Hidden(bool value) {
         Helpers::ModifierHelper::Hidden = value;
+        if (value)
+        {
+            Helpers::ModifierHelper::GhostNotes = false;
+            GhostNotesToggle->toggle->set_isOn(false);
+            if (Helpers::ModifierHelper::DisappearingArrows)
+            {
+                Helpers::ModifierHelper::NoArrows = false;
+                NoArrowsToggle->toggle->set_isOn(false);
+            }
+            Helpers::ModifierHelper::DisappearingArrows = false;
+            DisappearingArrowsToggle->toggle->set_isOn(false);
+        }
         Save();
     }
 
@@ -140,6 +193,11 @@ namespace ReBeat
 
     void ModifiersView::set_NoArrows(bool value) {
         Helpers::ModifierHelper::NoArrows = value;
+        if (value)
+        {
+            Helpers::ModifierHelper::DisappearingArrows = false;
+            DisappearingArrowsToggle->toggle->set_isOn(false);
+        }
         Save();
     }
 
@@ -149,6 +207,18 @@ namespace ReBeat
 
     void ModifiersView::set_GhostNotes(bool value) {
         Helpers::ModifierHelper::GhostNotes = value;
+        if (value)
+        {
+            Helpers::ModifierHelper::Hidden = false;
+            HiddenToggle->toggle->set_isOn(false);
+            if (Helpers::ModifierHelper::DisappearingArrows)
+            {
+                Helpers::ModifierHelper::NoArrows = false;
+                NoArrowsToggle->toggle->set_isOn(false);
+            }
+            Helpers::ModifierHelper::DisappearingArrows = false;
+            DisappearingArrowsToggle->toggle->set_isOn(false);
+        }
         Save();
     }
 
@@ -167,6 +237,15 @@ namespace ReBeat
 
     void ModifiersView::set_DisappearingArrows(bool value) {
         Helpers::ModifierHelper::DisappearingArrows = value;
+        if (value)
+        {
+            Helpers::ModifierHelper::Hidden = false;
+            HiddenToggle->toggle->set_isOn(false);
+            Helpers::ModifierHelper::GhostNotes = false;
+            GhostNotesToggle->toggle->set_isOn(false);
+            Helpers::ModifierHelper::NoArrows = false;
+            NoArrowsToggle->toggle->set_isOn(false);
+        }
         Save();
     }
 

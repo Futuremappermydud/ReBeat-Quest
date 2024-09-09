@@ -1,4 +1,5 @@
 #pragma once
+#include "HMUI/HoverHint.hpp"
 #include "System/IDisposable.hpp"
 #include "UnityEngine/MonoBehaviour.hpp"
 #include "UnityEngine/EventSystems/PointerEventData.hpp"
@@ -19,4 +20,5 @@ DECLARE_CLASS_CODEGEN(ReBeat, ToggleButton, UnityEngine::MonoBehaviour,
     DECLARE_DEFAULT_CTOR();
     public:
     BSML::ClickableImage* image;
+    HMUI::HoverHint* hoverHint;
 )
