@@ -13,7 +13,7 @@
 
 #include "songcore/shared/SongCore.hpp"
 
-#include "UnityEngine/ImageConversion.hpp"
+#include "bs-utils/shared/utils.hpp"
 
 static modloader::ModInfo modInfo{MOD_ID, VERSION, 0};
 
@@ -57,6 +57,8 @@ MOD_EXTERN_FUNC void late_load() noexcept {
 
     auto zenjector = ::Lapiz::Zenject::Zenjector::Get();
     zenjector->Install<ReBeat::MenuInstaller*>(::Lapiz::Zenject::Location::Menu);
+
+    bs_utils::Submission::disable(modInfo);
 }
 
 BSML_DATACACHE(MenuView) {

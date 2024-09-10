@@ -12,7 +12,7 @@ namespace ReBeat::Hooks
 {
     MAKE_HOOK_MATCH(AngleCutScore_GetNoteScoreDefinition, &GlobalNamespace::ScoreModel::GetNoteScoreDefinition, GlobalNamespace::ScoreModel::NoteScoreDefinition*, GlobalNamespace::NoteData::ScoringType scoringType)
     {
-        static std::map<GlobalNamespace::NoteData::ScoringType, GlobalNamespace::ScoreModel::NoteScoreDefinition*> noteScoreDefinitions = {
+        static std::map<GlobalNamespace::NoteData::ScoringType, SafePtr<GlobalNamespace::ScoreModel::NoteScoreDefinition>> noteScoreDefinitions = {
             {GlobalNamespace::NoteData::ScoringType::Ignore, nullptr},
             {GlobalNamespace::NoteData::ScoringType::NoScore, GlobalNamespace::ScoreModel::NoteScoreDefinition::New_ctor(0,  0,  0,  0,  0,  0)},
             {GlobalNamespace::NoteData::ScoringType::Normal, GlobalNamespace::ScoreModel::NoteScoreDefinition::New_ctor(50, 0,  30, 0,  20, 0)},
@@ -26,7 +26,7 @@ namespace ReBeat::Hooks
             return AngleCutScore_GetNoteScoreDefinition(scoringType);
         }
 
-        return noteScoreDefinitions[scoringType];
+        return noteScoreDefinitions[scoringType].ptr();
     }
 
     void AngleCutScoreHooks()

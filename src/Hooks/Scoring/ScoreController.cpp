@@ -49,6 +49,7 @@ namespace ReBeat::Hooks
         int misses = EnergyCounter->TotalMisses;
         int maxCombo = EnergyCounter->MaxCombo;
 
+        ReBeat::Logger.info("x0 {} {}", TotalCutScore, TotalNotes);
         ReBeat::Logger.info("x1 {} {} {} {}", acc, noteCount, misses, maxCombo);
 
         double missCountCurve = noteCount / (50 * std::pow(misses, 2) + noteCount) * ((50.0f * noteCount + 1) / (50.0f * noteCount)) - 1 / (50.0f * noteCount);
@@ -98,6 +99,8 @@ namespace ReBeat::Hooks
         {
             return;
         }
+
+        ReBeat::Logger.info("x6 {} {}", scoringElement->cutScore, scoringElement->noteData->gameplayType.value__);
 
         TotalCutScore += scoringElement->cutScore;
         TotalNotes++;

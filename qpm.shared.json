@@ -105,6 +105,11 @@
         "id": "songcore",
         "versionRange": "^1.1.15",
         "additionalData": {}
+      },
+      {
+        "id": "bs-utils",
+        "versionRange": "^0.8.4",
+        "additionalData": {}
       }
     ]
   },
@@ -123,6 +128,21 @@
         }
       },
       "version": "0.4.43"
+    },
+    {
+      "dependency": {
+        "id": "bs-utils",
+        "versionRange": "=0.8.4",
+        "additionalData": {
+          "soLink": "https://github.com/RedBrumbler/QuestBS-Utils/releases/download/v0.8.4/libbs-utils.so",
+          "debugSoLink": "https://github.com/RedBrumbler/QuestBS-Utils/releases/download/v0.8.4/debug_libbs-utils.so",
+          "overrideSoName": "libbs-utils.so",
+          "modLink": "https://github.com/RedBrumbler/QuestBS-Utils/releases/download/v0.8.4/BS-Utils.qmod",
+          "branchName": "version/v0_8_4",
+          "cmake": true
+        }
+      },
+      "version": "0.8.4"
     },
     {
       "dependency": {

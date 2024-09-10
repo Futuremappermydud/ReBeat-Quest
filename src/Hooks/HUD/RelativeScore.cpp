@@ -16,6 +16,7 @@ namespace ReBeat::Hooks
 {
     float get_relativeScore()
     {
+        ReBeat::Logger.info("Getting relative score {} {} > {} | {} {} > {}", CurrentScore, CurrentMaxScore, (float)CurrentScore / (float)CurrentMaxScore, TotalCutScore, TotalNotes * 100.0f, TotalCutScore / (TotalNotes * 100.0f));
         float relativeScore = getReBeatConfig().ShowComboPercent.GetValue() ? (float)CurrentScore / (float)CurrentMaxScore : 
                                                                               TotalCutScore / (TotalNotes * 100.0f);
         return TotalNotes == 0 ? 1 : relativeScore;
